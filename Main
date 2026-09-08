@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BankAccountManagement
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            try
+            {
+                BankAccount acc1 = new BankAccount("Nguyễn Văn An", 1000000m);
+                BankAccount acc2 = new BankAccount("Trần Thị Bình", 2000000m);
+                Console.WriteLine("TÀI KHOẢN 1");
+                acc1.DisplayInfo();
+                Console.WriteLine("\nTÀI KHOẢN 2");
+                acc2.DisplayInfo();
+                Console.WriteLine("\n--- NẠP TIỀN ---");
+                acc1.Deposit(500000m);
+                acc1.DisplayInfo();
+                Console.WriteLine("\n--- RÚT TIỀN ---");
+                acc1.Withdraw(300000m);
+                acc1.DisplayInfo();
+                Console.WriteLine("\n--- RÚT QUÁ SỐ DƯ CHO PHÉP ---");
+                acc1.Withdraw(2000000m);
+                Console.WriteLine("\n--- TẠO TÀI KHOẢN SAI ---");
+                try
+                {
+                    BankAccount acc3 = new BankAccount("Lê Văn Cường", 30000m);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine("Lỗi: " + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+            }
+        }
+    }
+}
